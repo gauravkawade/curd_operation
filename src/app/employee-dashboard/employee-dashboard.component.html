@@ -1,0 +1,135 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1 style="color: aliceblue;">Employee Management</h1>
+        <div class="d-flex">
+            <button (click)="clickAddEmployee()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Add Employee</button>
+        </div>
+    </div>
+
+</nav>
+
+<table class="table mt-3"> 
+    <thead>
+        <tr>
+            <th scope="col">Employee ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Email ID</th>
+            <th scope="col">Mobile No.</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Designation</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of employeeData">
+            <td>{{row.id}}</td>
+            <td>{{row.firstName}}</td>
+            <td>{{row.lastName}}</td>
+            <td>{{row.address}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.mobile}}</td>
+            <td>{{row.username}}</td>
+            <td>{{row.designation}}</td>
+            <td>
+                <button (click)="onEdit(row)" style="color: aliceblue;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
+                <button (click)="deletEmployee(row)" class="btn btn-danger mx-3">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+  
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <form [formGroup]="formValue"(ngSubmit)="submit" >
+                
+              <div class="mb-3 form-group">
+                  <label for="InputFirtName1" class="form-label">First Name</label>
+                  <input type="text" class="form-control" formControlName="firstName" id="InputFirtName11"placeholder="Enter firstname" name="firstName" required minlength="1" maxlength="50"
+                  onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" />
+                  <div class="valid-feedback">Valid firstname.</div>
+                  <div *ngIf="f.firstName.touched && f.firstName.invalid" class="alert alert-danger">
+                             Firstname Required
+                   </div>
+                </div>
+                  
+                    <div class="mb-3">
+                    <label for="InputLastName1" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" formControlName="lastName"
+                    id="InputLastName11"placeholder="Enter lastname" name="lastName" required minlength="1" maxlength="50" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" />
+                    <div class="valid-feedback">Valid lastname.</div>
+                  <div *ngIf="f.lastName.touched && f.lastName.invalid" class="alert alert-danger">
+                    Lastname Required
+                   </div>
+                    </div>
+                  <div class="mb-3">
+                      <label for="InputLastName1" class="form-label">Address</label>
+                      <input type="text" class="form-control" formControlName="address"
+                      id="Inputaddress11"placeholder="Enter Address" name="address" required minlength="1" maxlength="250" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" />
+                      <div class="valid-feedback">Valid address.</div>
+                    <div *ngIf="f.address.touched && f.address.invalid" class="alert alert-danger">
+                      address Required
+                     </div>
+                     </div>
+
+                    <div class="mb-3 col-12">
+                      <label for="EmailAddressInput" class="for-label">Email</label>
+                       <input type="email" formControlName="email"  class="form-control" id="EmailAddressInput" placeholder="name@example.com" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$"/>
+                      <div class="valid-feedback">Valid email ID</div>
+                      <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
+                        Email ID Required
+                       </div>
+                    
+                  </div>
+
+                   <div class="mb-3">
+                    <label for="Inputmobile1" class="form-label">Mobile Number</label>
+                    <input type="text" class="form-control" formControlName="mobile"
+                    id="InputLmobile1"placeholder="Enter mobile no" name="mobile" required minlength="10" maxlength="10" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" />
+                    <div class="valid-feedback">Valid number.</div>
+                  <div *ngIf="f.mobile.touched && f.mobile.invalid" class="alert alert-danger">
+                    mobile number Required
+                   </div>
+                   
+                  </div>
+                  <div class="mb-3">
+                    <label for="InputUserName1" class="form-label">User Name</label>
+                    <input type="text" class="form-control" formControlName="username"
+                    id="InputUserName1"placeholder="Enter username" name="username" required minlength="1" maxlength="50" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" />
+                    <div class="valid-feedback">Valid username.</div>
+                  <div *ngIf="f.username.touched && f.username.invalid" class="alert alert-danger">
+                    username Required
+                   </div>
+                   </div>
+
+                   <div class="mb-3">
+                    <label for="Inputdesignation1" class="form-label">Designation</label>
+                    <input type="text" class="form-control" formControlName="designation"
+                    id="Inputdesignation11"placeholder="Enter Designation" name="designation" required minlength="1" maxlength="50" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" />
+                    <div class="valid-feedback">Valid designation.</div>
+                  <div *ngIf="f.designation.touched && f.designation.invalid" class="alert alert-danger">
+                    Designation Required
+                   </div>
+                   </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button [disabled]="formValue.invalid" type="button" *ngIf="showAdd" (click)="postEmployeeDetails()" class="btn btn-primary">Add</button>
+          <button type="button" *ngIf="showUpdate" (click)="updateEmployeeDetails()" class="btn btn-primary">Update</button>
+          
+        </div>
+      </div>
+    </div>
+</div>
+  

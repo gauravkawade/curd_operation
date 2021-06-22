@@ -1,0 +1,38 @@
+{
+  "posts": [
+    {
+      "id": 2,
+      "firstName": "prashant",
+      "lastName": "Raut",
+      "address": "pune",
+      "email": "prashant@gmail.com",
+      "mobile": "7747388838",
+      "username": "prashanraut",
+      "designation": "developer"
+    },
+    {
+      "id": 3,
+      "firstName": "Gaurav ",
+      "lastName": "kawade",
+      "address": "pune",
+      "email": "name@email.com",
+      "mobile": "9494900443",
+      "username": "Gaurav kawade",
+      "designation": "developer"
+    },
+    {
+      "id": 4,
+      "firstName": "vaibhav",
+      "lastName": "vaibhav",
+      "address": "pune",
+      "email": "vaib@gmail.com",
+      "mobile": "8588498887",
+      "username": "vaibhaw",
+      "designation": "manager"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
